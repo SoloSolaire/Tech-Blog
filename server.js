@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const routes = require('./controllers');
+require('dotenv').config();
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -10,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
-    secret: process.env.DB_COOKIE_SECRET,
+    secret: process.env.COOKIE_SECRET,
     cookie: {
         maxAge: 150000,
         httpOnly: true,
